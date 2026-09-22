@@ -1,6 +1,6 @@
 import React from 'react'
 import { ContextProvider } from "../context/ContextProvider"
-const Navber=()=>{
+const Navber=({view,setView})=>{
     const { register ,user ,loader,logout } = React.useContext(ContextProvider);
     const userRegister =() =>{
         register();
@@ -43,6 +43,20 @@ const Navber=()=>{
             <div className="navber__container">
                 <div className="navber__logo">
                     Messenger
+                </div>
+                <div className="navber__tabs">
+                    <button
+                        className={`navber__tab ${view === 'chat' ? 'navber__tab--active' : ''}`}
+                        onClick={() => setView('chat')}
+                    >
+                        Chat
+                    </button>
+                    <button
+                        className={`navber__tab ${view === 'signals' ? 'navber__tab--active' : ''}`}
+                        onClick={() => setView('signals')}
+                    >
+                        Trading Signals
+                    </button>
                 </div>
                {checkuser()}
             </div>
